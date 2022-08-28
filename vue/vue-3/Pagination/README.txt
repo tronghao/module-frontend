@@ -1,7 +1,9 @@
 # Pagination
+
 **Import**
 import UsePagination from ....
 const {} = UsePagination();
+
 **How to use:**
     <Pagination
         :total="paginationInfo.total"
