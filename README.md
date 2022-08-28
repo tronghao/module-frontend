@@ -1,2 +1,2 @@
 # module-frontend
-Module-frontend
+My module general
