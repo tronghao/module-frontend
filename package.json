@@ -1,0 +1,27 @@
+{
+  "name": "haodt-module",
+  "version": "1.0.0",
+  "description": "Reusable features",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tronghao/module-frontend.git"
+  },
+  "dependencies": {
+    "@element-plus/icons": "0.0.11",
+    "element-plus": "2.2.9"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.1.4",
+    "unplugin-element-plus": "^0.4.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tronghao/module-frontend/issues"
+  },
+  "homepage": "https://github.com/tronghao/module-frontend#readme"
+}
