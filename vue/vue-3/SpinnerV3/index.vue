@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  name: "SpinnerV3",
   props: {
     loading: {
       type: Boolean,
