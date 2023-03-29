@@ -177,13 +177,12 @@ export function checkNumberOneAndTwoByte(string) {
   return regex.exec(string);
 }
 
-
 /**
  * convertDoubleByteToSingleByte Convert double byte integer to single byte
  * @author SuTV
  */
 export function convertDoubleByteToSingleByte(value) {
-  let result = '';
+  let result = "";
   const regex = /[\uFF10-\uFF19]/g;
   if (value) {
     result = value.toString().replace(regex, function (character) {
@@ -233,11 +232,11 @@ export function checkCharacterTwoByte(value) {
 }
 
 export function downloadTagA(path, filename) {
-  const element = document.createElement('a');
-  element.setAttribute('href', path);
-  element.setAttribute('download', filename);
+  const element = document.createElement("a");
+  element.setAttribute("href", path);
+  element.setAttribute("download", filename);
 
-  element.style.display = 'none';
+  element.style.display = "none";
   document.body.appendChild(element);
 
   element.click();
@@ -268,8 +267,8 @@ export function matchInArray(string, expressions) {
  * @returns {string}
  */
 export function createUniqueString() {
-  const timestamp = +new Date() + '';
-  const randomNum = parseInt((1 + Math.random()) * 65536) + '';
+  const timestamp = +new Date() + "";
+  const randomNum = parseInt((1 + Math.random()) * 65536) + "";
   return (+(randomNum + timestamp)).toString(32);
 }
 
@@ -323,13 +322,17 @@ export function debounce(func, wait, immediate) {
  * @param {string} url
  */
 export function param2Obj(url) {
-  const search = url.split('?')[1];
+  const search = url.split("?")[1];
   if (!search) {
     return {};
   }
   return JSON.parse(
     '{"' +
-      decodeURIComponent(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"').replace(/\+/g, ' ') +
+      decodeURIComponent(search)
+        .replace(/"/g, '\\"')
+        .replace(/&/g, '","')
+        .replace(/=/g, '":"')
+        .replace(/\+/g, " ") +
       '"}'
   );
 }
@@ -370,15 +373,15 @@ export function parseTime(time, cFormat) {
     return null;
   }
 
-  const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}';
+  const format = cFormat || "{y}-{m}-{d} {h}:{i}:{s}";
   let date;
-  if (typeof time === 'object') {
+  if (typeof time === "object") {
     date = time;
   } else {
-    if (typeof time === 'string' && /^[0-9]+$/.test(time)) {
+    if (typeof time === "string" && /^[0-9]+$/.test(time)) {
       time = parseInt(time) * 1000;
     }
-    if (typeof time === 'number' && time.toString().length === 10) {
+    if (typeof time === "number" && time.toString().length === 10) {
       time = time * 1000;
     }
 
@@ -396,11 +399,19 @@ export function parseTime(time, cFormat) {
   return format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
     let value = formatObj[key];
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') {
-      return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][value];
+    if (key === "a") {
+      return [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ][value];
     }
     if (result.length > 0 && value < 10) {
-      value = '0' + value;
+      value = "0" + value;
     }
 
     return value || 0;
@@ -413,18 +424,22 @@ export function parseTime(time, cFormat) {
  * @param digits
  * @returns {string}
  */
- export function numberFormatter(num, digits) {
+export function numberFormatter(num, digits) {
   const si = [
-    { value: 1e18, symbol: 'E' },
-    { value: 1e15, symbol: 'P' },
-    { value: 1e12, symbol: 'T' },
-    { value: 1e9, symbol: 'G' },
-    { value: 1e6, symbol: 'M' },
-    { value: 1e3, symbol: 'k' },
+    { value: 1e18, symbol: "E" },
+    { value: 1e15, symbol: "P" },
+    { value: 1e12, symbol: "T" },
+    { value: 1e9, symbol: "G" },
+    { value: 1e6, symbol: "M" },
+    { value: 1e3, symbol: "k" },
   ];
   for (let i = 0; i < si.length; i++) {
     if (num >= si[i].value) {
-      return (num / si[i].value + 0.1).toFixed(digits).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, '$1') + si[i].symbol;
+      return (
+        (num / si[i].value + 0.1)
+          .toFixed(digits)
+          .replace(/\.0+$|(\.[0-9]*[1-9])0+$/, "$1") + si[i].symbol
+      );
     }
   }
   return num.toString();
@@ -436,7 +451,9 @@ export function parseTime(time, cFormat) {
  * @returns {string}
  */
 export function toThousandFilter(num) {
-  return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','));
+  return (+num || 0)
+    .toString()
+    .replace(/^-?\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ","));
 }
 
 /**
@@ -445,7 +462,7 @@ export function toThousandFilter(num) {
  * @returns {string}
  */
 export function kFormatter(num) {
-  return num > 999 ? (num / 1000).toFixed(1) + 'k' : num;
+  return num > 999 ? (num / 1000).toFixed(1) + "k" : num;
 }
 
 /**
@@ -453,10 +470,10 @@ export function kFormatter(num) {
  * @author SuTV
  */
 export function parseTimeToTzJapan(date) {
-  if (date && date.includes('0Z')) {
-    return moment(date).utcOffset('+09:00').format('YYYY/MM/DD HH:mm');
+  if (date && date.includes("0Z")) {
+    return moment(date).utcOffset("+09:00").format("YYYY/MM/DD HH:mm");
   } else {
-    return parseTime(date, '{y}/{m}/{d} {h}:{i}');
+    return parseTime(date, "{y}/{m}/{d} {h}:{i}");
   }
 }
 
@@ -464,7 +481,7 @@ export function parseTimeToTzJapan(date) {
  * checkOnlyNumber check only number of string
  * @author DangLH
  */
-export const checkOnlyFloatNumber = string => {
+export const checkOnlyFloatNumber = (string) => {
   if (!string) {
     return true;
   }
@@ -472,13 +489,12 @@ export const checkOnlyFloatNumber = string => {
   return regex.test(string);
 };
 
-
 /**
  * @param {string} str
  * @returns {Boolean}
  */
 export function isString(str) {
-  return typeof str === 'string' || str instanceof String;
+  return typeof str === "string" || str instanceof String;
 }
 
 /**
@@ -486,8 +502,8 @@ export function isString(str) {
  * @returns {Boolean}
  */
 export function isArray(arg) {
-  if (typeof Array.isArray === 'undefined') {
-    return Object.prototype.toString.call(arg) === '[object Array]';
+  if (typeof Array.isArray === "undefined") {
+    return Object.prototype.toString.call(arg) === "[object Array]";
   }
   return Array.isArray(arg);
 }
@@ -539,13 +555,84 @@ export function numberOneByte(string) {
  */
 export function validURL(url) {
   const pattern = new RegExp(
-    '^(https?:\\/\\/)?' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-      '(\\#[-a-z\\d_]*)?$',
-    'i'
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
   );
   return !!pattern.test(url);
 }
+
+/**
+ * roundTimeQuarterHour route time to 1/4 hour
+ * @author HaoDT
+ */
+export function roundTimeQuarterHour(time) {
+  var timeToReturn = new Date(time);
+
+  timeToReturn.setMilliseconds(
+    Math.ceil(timeToReturn.getMilliseconds() / 1000) * 1000
+  );
+  timeToReturn.setSeconds(Math.ceil(timeToReturn.getSeconds() / 60) * 60);
+  timeToReturn.setMinutes(Math.ceil(timeToReturn.getMinutes() / 15) * 15);
+  return timeToReturn;
+}
+
+/**
+ * disabledDateElDatePicker disabled date of date picker
+ * @author HaoDT
+ */
+export const disabledDateElDatePicker = (time) => {
+  const dateOffset = 24 * 60 * 60 * 1000 * 1; // 1 days
+  const now = new Date();
+  now.setTime(now.getTime() - dateOffset);
+  return time.getTime() < now;
+};
+
+/**
+ * functionForSortJavascriptByAttributeAsc function for sort javascript by attribute asc
+ * @author HaoDT
+ */
+export const functionForSortJavascriptByAttributeAsc = (
+  item1,
+  item2,
+  attribute,
+  sortTypeASC = true
+) => {
+  if (sortTypeASC) {
+    if (item1[attribute] < item2[attribute]) {
+      return -1;
+    }
+    if (item1[attribute] > item2[attribute]) {
+      return 1;
+    }
+    return 0;
+  } else {
+    if (item1[attribute] > item2[attribute]) {
+      return -1;
+    }
+    if (item1[attribute] < item2[attribute]) {
+      return 1;
+    }
+    return 0;
+  }
+};
+
+/**
+ * getTimeNowJP get time now in japan
+ * @author HaoDT
+ */
+export const getTimeNowJP = () => {
+  return new Date().toLocaleString("en-US", { timeZone: "Asia/Tokyo" });
+};
+
+/**
+ * scrollToBottom scroll to bottom page
+ * @author HaoDT
+ */
+export const scrollToBottom = () => {
+  window.scrollTo(0, document.body.scrollHeight);
+};
