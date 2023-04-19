@@ -636,3 +636,14 @@ export const getTimeNowJP = () => {
 export const scrollToBottom = () => {
   window.scrollTo(0, document.body.scrollHeight);
 };
+
+/**
+ * resetDateToFirstHourOfTheDay reset the date to the first hour of the day
+ * @author HaoDT
+ */
+export const resetDateToFirstHourOfTheDay = (date) => {
+  if (!Object.prototype.toString.call(date) === "[object Date]") {
+    date = new Date(date);
+  }
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+};
