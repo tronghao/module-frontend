@@ -647,3 +647,80 @@ export const resetDateToFirstHourOfTheDay = (date) => {
   }
   return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
 };
+
+/**
+ * getExtensionFile get extension file
+ * @author HaoDT
+ */
+export const getExtensionFile = filename => {
+  return filename.split('.').pop();
+};
+
+
+/**
+ * getFileNameFromPath
+ */
+export function getFileNameFromPath(path) {
+  if (path) {
+    const arrPath = path.split('/');
+    return arrPath.pop();
+  }
+  return path;
+}
+
+/**
+ * removeTailwindClass remove tailwind class
+ * @author HaoDT
+ */
+export const removeTailwindClass = content => {
+  let result = content;
+  const regex = /class\s*=\s*["']([^"']+)["']/gm;
+
+  let match;
+
+  while ((match = regex.exec(content)) !== null) {
+    // This is necessary to avoid infinite loops with zero-width matches
+    if (match.length && match.length > 1) {
+      if (match[0]) {
+        let replaceContent = match[0];
+        replaceContent = replaceContent.replaceAll('tw-', 'tw2-');
+        result = result.replaceAll(match[0], replaceContent);
+      }
+    }
+  }
+  return result;
+};
+
+/* eslint-disable */
+/**
+ * checkFileExistence check file existence
+ * @author HaoDT
+ */
+export const checkFileExistence = file => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      resolve(true); // File tồn tại
+    };
+
+    reader.onerror = () => {
+      resolve(false); // File không tồn tại
+    };
+
+    reader.readAsDataURL(file);
+  });
+};
+/* eslint-enable */
+
+/**
+ * getDistanceDateWithNow get distance date with now
+ * @author HaoDT
+ */
+export const getDistanceDateWithNow = date => {
+  date = new Date(date);
+  const dateNow = new Date();
+  const difference = date.getTime() - dateNow.getTime();
+  const totalDays = Math.floor(difference / (1000 * 3600 * 24));
+  return totalDays;
+};
