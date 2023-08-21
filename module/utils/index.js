@@ -232,16 +232,29 @@ export function checkCharacterTwoByte(value) {
 }
 
 export function downloadTagA(path, filename) {
-  const element = document.createElement("a");
-  element.setAttribute("href", path);
-  element.setAttribute("download", filename);
-
-  element.style.display = "none";
-  document.body.appendChild(element);
-
-  element.click();
-
-  document.body.removeChild(element);
+  fetch(path, {
+    method: 'get',
+  })
+    .then(response => response.blob())
+    .then(blob => {
+      if (navigator.msSaveBlob) {
+        // IE11 and Edge 17-
+        navigator.msSaveBlob(blob, filename);
+      } else {
+        // every other browser
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const a = document.createElement('a');
+          a.href = reader.result;
+          a.style.display = 'none';
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          a.parentNode.removeChild(a);
+        };
+        reader.readAsDataURL(blob);
+      }
+    });
 }
 
 /**
@@ -723,4 +736,14 @@ export const getDistanceDateWithNow = date => {
   const difference = date.getTime() - dateNow.getTime();
   const totalDays = Math.floor(difference / (1000 * 3600 * 24));
   return totalDays;
+};
+
+/**
+ * isAfterDate is after date
+ * @author HaoDT
+ */
+export const isAfterDate = (dateAfter, dateBefore) => {
+  dateAfter = new Date(dateAfter);
+  dateBefore = new Date(dateBefore);
+  return dateAfter > dateBefore;
 };
