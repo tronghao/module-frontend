@@ -60,6 +60,11 @@ export const others = [
     comment: "id là id của input text cần bỏ text vào để copy",
   },
   {
+    name: "copyToClipBoardNotInput",
+    param: "(text)",
+    comment: "",
+  },
+  {
     name: "checkMatchingHighlightRed",
     param: "(source, string)",
     comment: "Check matching and highlight red in character incorrectly",

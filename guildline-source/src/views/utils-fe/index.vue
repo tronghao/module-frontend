@@ -47,12 +47,6 @@
         </div>
       </div>
     </div>
-    <el-input
-      id="copy"
-      class="hidden"
-      v-model="form.textSelect"
-      placeholder="Search module"
-    />
   </div>
   <router-view />
 </template>
@@ -65,7 +59,7 @@ import { formats } from "./formats.js";
 import { times } from "./times.js";
 import { validates } from "./validates.js";
 import { others } from "./others.js";
-import { copyToClipBoard } from "@/utils";
+import { copyToClipBoardNotInput } from "@/utils";
 
 export default {
   setup() {
@@ -137,9 +131,7 @@ export default {
      * @author HaoDT
      */
     const handleCopyToClipBoard = async (text) => {
-      state.form.textSelect = text;
-      await nextTick();
-      copyToClipBoard("copy");
+      copyToClipBoardNotInput(text);
       ElMessage({
         message: "Copied to clipboard!",
         type: "success",
