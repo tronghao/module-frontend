@@ -16,6 +16,11 @@ export const routes = [
         component: () => import("@/views/utils-test"),
       },
       {
+        path: "/utils-fe",
+        name: "UtilsFE",
+        component: () => import("@/views/utils-fe"),
+      },
+      {
         path: "/vue3-loading",
         name: "Vue3Loading",
         component: () => import("@/views/vue3/loading"),
