@@ -747,3 +747,37 @@ export const isAfterDate = (dateAfter, dateBefore) => {
   dateBefore = new Date(dateBefore);
   return dateAfter > dateBefore;
 };
+
+/**
+ * copyToClipBoard copy to clip board
+ * @author HaoDT
+ */
+export const copyToClipBoard = (id) => {
+  // Get the text field
+  var copyText = document.getElementById(id);
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+};
+
+/**
+ * checkMatchingHighlightRed check matching and highlight red in character incorrectly
+ * @author HaoDT
+ */
+export const checkMatchingHighlightRed = (source, string) => {
+  let result = "";
+  source = source.toLowerCase();
+  string = string.toLowerCase();
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] !== source[i]) {
+      result += `<span class="text-red-500">${string[i]}</span>`;
+    } else {
+      result += string[i];
+    }
+  }
+  return result;
+};
