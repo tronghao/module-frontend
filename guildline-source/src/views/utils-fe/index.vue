@@ -13,7 +13,7 @@
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAl43TCl7WwNbydwuJxTLGF4ZS75g-4Atk5w&usqp=CAU"
           />
         </div>
-        <div>{{ group.group }}</div>
+        <div>{{ group.group }} ({{ lengthComponent(group.components) }})</div>
       </div>
       <div class="mt-5 flex flex-wrap gap-10">
         <div
@@ -138,11 +138,20 @@ export default {
       });
     };
 
+    /**
+     * lengthComponent length component
+     * @author HaoDT
+     */
+    const lengthComponent = (components) => {
+      return components.filter(item => item.name !== '').length;
+    }
+
     return {
       ...toRefs(state),
       moduleList,
       generateImageIcon,
       handleCopyToClipBoard,
+      lengthComponent,
     };
   },
 };
