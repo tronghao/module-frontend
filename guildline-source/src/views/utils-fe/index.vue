@@ -1,5 +1,8 @@
 <template>
   <div class="mt-5 flex flex-wrap gap-10">
+    <div class="flex justify-end w-full text-[blue]">
+      <a href="https://github.com/tronghao/module-frontend/blob/main/module/utils/index.js" target="_blank">https://github.com/tronghao/module-frontend/blob/main/module/utils/index.js</a>
+    </div>
     <el-input v-model="form.search" placeholder="Search module" />
     <div
       class="w-full bg-white p-5 rounded-lg"
