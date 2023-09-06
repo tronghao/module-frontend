@@ -21,7 +21,14 @@ import { code } from "./code.js";
           <div class="mt-4 leading-10">
             <div>
               <div>Location:</div>
-              <b class="text-red-500">module-frontend/vue/vue-3/CodeMirror</b>
+              <b>
+                <a
+                  class="text-red-500"
+                  target="_blank"
+                  href="https://github.com/tronghao/module-frontend/tree/main/module-frontend/vue/vue-3/CodeMirror"
+                  >module-frontend/vue/vue-3/CodeMirror</a
+                >
+              </b>
             </div>
             <div class="mt-8">
               <div>How to use:</div>

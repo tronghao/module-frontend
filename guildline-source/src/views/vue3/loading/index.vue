@@ -21,7 +21,14 @@ import { code } from "./code.js";
           <div class="mt-4 leading-10">
             <div>
               <div>Location:</div>
-              <b class="text-red-500">module-frontend/vue/vue-3/SpinnerV3</b>
+              <b>
+                <a
+                  class="text-red-500"
+                  target="_blank"
+                  href="https://github.com/tronghao/module-frontend/tree/main/module/vue/vue-3/SpinnerV3"
+                  >module-frontend/vue/vue-3/SpinnerV3</a
+                >
+              </b>
             </div>
             <div class="mt-8">
               <div>How to use:</div>

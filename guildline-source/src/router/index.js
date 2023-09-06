@@ -30,6 +30,16 @@ export const routes = [
         name: "CodeMirror",
         component: () => import("@/views/vue3/code-mirror"),
       },
+      {
+        path: "/vue3-enter-key",
+        name: "EnterKey",
+        component: () => import("@/views/vue3/enter-key"),
+      },
+      {
+        path: "/vue3-focus-input",
+        name: "FocusInput",
+        component: () => import("@/views/vue3/focus-input"),
+      },
     ],
   },
 ];
