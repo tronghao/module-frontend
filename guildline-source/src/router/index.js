@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { utilsRoute } from './utils';
+import { vue3Route } from './vue-3';
 
 export const routes = [
   {
@@ -10,36 +12,8 @@ export const routes = [
         name: "Home",
         component: () => import("@/views/home"),
       },
-      {
-        path: "/utils-test",
-        name: "UtilsTest",
-        component: () => import("@/views/utils-test"),
-      },
-      {
-        path: "/utils-fe",
-        name: "UtilsFE",
-        component: () => import("@/views/utils-fe"),
-      },
-      {
-        path: "/vue3-loading",
-        name: "Vue3Loading",
-        component: () => import("@/views/vue3/loading"),
-      },
-      {
-        path: "/vue3-code-mirror",
-        name: "CodeMirror",
-        component: () => import("@/views/vue3/code-mirror"),
-      },
-      {
-        path: "/vue3-enter-key",
-        name: "EnterKey",
-        component: () => import("@/views/vue3/enter-key"),
-      },
-      {
-        path: "/vue3-focus-input",
-        name: "FocusInput",
-        component: () => import("@/views/vue3/focus-input"),
-      },
+      ...utilsRoute,
+      ...vue3Route,
     ],
   },
 ];

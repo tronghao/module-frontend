@@ -11,4 +11,10 @@ export const utilComponents = [
     name: "Utils FE",
     link: "UtilsFE",
   },
+  {
+    image:
+      "https://brandonwamboldt.github.io/utilphp/images/utility_logo.png",
+    name: "Utils PHP",
+    link: "UtilsPHP",
+  },
 ];
