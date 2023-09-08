@@ -25,7 +25,7 @@ import { code } from "./code.js";
                 <a
                   class="text-red-500"
                   target="_blank"
-                  href="https://github.com/tronghao/module-frontend/tree/main/module-frontend/vue/vue-3/CodeMirror"
+                  href="https://github.com/tronghao/module-frontend/tree/main/module/vue/vue-3/CodeMirror"
                   >module-frontend/vue/vue-3/CodeMirror</a
                 >
               </b>
